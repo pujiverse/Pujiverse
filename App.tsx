@@ -11,7 +11,7 @@ import SectionWrapper from './components/SectionWrapper';
 const App: React.FC = () => {
   return (
     <Router>
-      <div className="min-h-screen flex flex-col font-sans">
+      <div className="min-h-screen flex flex-col font-sans selection:bg-cyan-500 selection:text-white">
         <Header />
         <main className="flex-grow">
           <Routes>
@@ -23,10 +23,10 @@ const App: React.FC = () => {
             <Route
               path="*"
               element={
-                <SectionWrapper className="text-center py-20 bg-gray-50">
-                  <h2 className="text-4xl font-bold text-gray-900 mb-4">404 - Page Not Found</h2>
-                  <p className="text-lg text-gray-700 mb-8">The page you're looking for does not exist.</p>
-                  <a href="/" className="text-blue-600 hover:underline">Return Home</a>
+                <SectionWrapper className="text-center py-20">
+                  <h2 className="text-4xl font-bold text-white mb-4">404 - Page Not Found</h2>
+                  <p className="text-lg text-gray-300 mb-8">The page you're looking for does not exist in this universe.</p>
+                  <a href="/" className="text-cyan-400 hover:text-cyan-300 hover:underline">Return Home</a>
                 </SectionWrapper>
               }
             />

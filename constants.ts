@@ -17,7 +17,7 @@ This is my digital home, where you can find all my adventures, projects, and ins
 Join me on this journey as we connect, learn, and grow together!
 `;
 
-export const PROFILE_IMAGE_URL = 'https://picsum.photos/400/400?random=1'; 
+export const PROFILE_IMAGE_URL = 'https://github.com/pujiverse.png'; 
 
 export const CONTACT_EMAIL = 'techwithpujith@gmail.com';
 export const WHATSAPP_LINK = 'https://wa.me/message/HPIAGRGKO23SM1'; 

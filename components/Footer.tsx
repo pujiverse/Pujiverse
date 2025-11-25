@@ -7,11 +7,11 @@ const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-gray-900 text-white py-12 px-4 sm:px-6 lg:px-8">
+    <footer className="bg-black/50 backdrop-blur-md border-t border-white/10 text-white py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
         {/* Copyright & Attribution */}
         <div className="flex flex-col items-center md:items-start">
-          <h3 className="text-xl font-bold mb-4">{SITE_NAME}</h3>
+          <h3 className="text-xl font-bold mb-4 text-cyan-100">{SITE_NAME}</h3>
           <p className="text-gray-400 mb-2">
             Copyright &copy; {currentYear} {SITE_NAME}
           </p>
@@ -22,13 +22,13 @@ const Footer: React.FC = () => {
 
         {/* Quick Links */}
         <div>
-          <h3 className="text-xl font-bold mb-4">Quick Links</h3>
+          <h3 className="text-xl font-bold mb-4 text-cyan-100">Quick Links</h3>
           <ul className="space-y-2">
             {HEADER_NAV_LINKS.map((link) => (
               <li key={link.name}>
                 <NavLink
                   to={link.path}
-                  className="text-gray-400 hover:text-blue-500 transition-colors duration-200"
+                  className="text-gray-400 hover:text-cyan-400 transition-colors duration-200"
                 >
                   {link.name}
                 </NavLink>
@@ -39,7 +39,7 @@ const Footer: React.FC = () => {
 
         {/* Social Handles */}
         <div className="flex flex-col items-center md:items-start">
-          <h3 className="text-xl font-bold mb-4">Follow Me</h3>
+          <h3 className="text-xl font-bold mb-4 text-cyan-100">Follow Me</h3>
           <SocialLinks links={SOCIAL_LINKS} className="justify-center md:justify-start" />
         </div>
       </div>
