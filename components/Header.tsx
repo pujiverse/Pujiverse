@@ -79,13 +79,13 @@ const Header: React.FC = () => {
       )}
 
       {/* Floating "Contact Me" Button */}
-      <a
-        href={`mailto:${CONTACT_EMAIL}`}
+      <NavLink
+        to="/contact"
         className="fixed bottom-6 right-6 bg-blue-600 text-white px-6 py-3 rounded-full shadow-xl hover:bg-blue-700 transition-all duration-300 transform hover:scale-105 z-50 text-lg font-semibold"
-        aria-label="Contact me via email"
+        aria-label="Go to contact page"
       >
         Contact Me
-      </a>
+      </NavLink>
     </header>
   );
 };

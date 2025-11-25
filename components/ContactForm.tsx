@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import SectionWrapper from './SectionWrapper';
-import { CONTACT_EMAIL, WHATSAPP_LINK } from '../constants';
-import { FaEnvelope, FaWhatsapp } from 'react-icons/fa';
+import { CONTACT_EMAIL, WHATSAPP_LINK, TELEGRAM_CHANNEL_LINK } from '../constants';
+import { FaEnvelope, FaWhatsapp, FaTelegramPlane } from 'react-icons/fa';
 
 const ContactForm: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -17,15 +17,26 @@ const ContactForm: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // In a real application, you would send this data to a backend service.
-    // For this example, we'll simulate submission and provide a mailto link.
+    
+    // Construct the email subject and body
+    const subject = encodeURIComponent(`Contact from Pujiverse: ${formData.name}`);
+    const body = encodeURIComponent(
+      `Name: ${formData.name}\n` +
+      `Email: ${formData.email}\n\n` +
+      `Message:\n${formData.message}`
+    );
+    
+    // Open the default email client with the data pre-filled
+    window.location.href = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`;
+
     console.log('Form Data Submitted:', formData);
     setIsSubmitted(true);
-    // Optionally, clear the form after a short delay or successful "send"
+    
+    // Reset the form after a delay
     setTimeout(() => {
       setFormData({ name: '', email: '', message: '' });
       setIsSubmitted(false);
-    }, 5000); // Reset after 5 seconds
+    }, 5000); 
   };
 
   return (
@@ -86,7 +97,7 @@ const ContactForm: React.FC = () => {
             </button>
             {isSubmitted && (
               <p className="mt-4 text-green-600 font-medium">
-                Thank you for your message! I'll get back to you soon.
+                Opening your email client...
               </p>
             )}
           </div>
@@ -96,12 +107,12 @@ const ContactForm: React.FC = () => {
           <p className="text-lg text-gray-700 mb-4">
             Prefer direct contact? Reach out via:
           </p>
-          <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
+          <div className="flex flex-wrap justify-center items-center gap-4">
             <a
               href={`mailto:${CONTACT_EMAIL}`}
               className="inline-flex items-center px-6 py-3 bg-gray-800 text-white rounded-full shadow-md hover:bg-gray-900 transition-colors duration-300 transform hover:scale-105"
             >
-              <FaEnvelope className="mr-2" /> {CONTACT_EMAIL}
+              <FaEnvelope className="mr-2" /> Email
             </a>
             <a
               href={WHATSAPP_LINK}
@@ -110,6 +121,14 @@ const ContactForm: React.FC = () => {
               className="inline-flex items-center px-6 py-3 bg-green-500 text-white rounded-full shadow-md hover:bg-green-600 transition-colors duration-300 transform hover:scale-105"
             >
               <FaWhatsapp className="mr-2" /> WhatsApp
+            </a>
+            <a
+              href={TELEGRAM_CHANNEL_LINK}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center px-6 py-3 bg-cyan-600 text-white rounded-full shadow-md hover:bg-cyan-700 transition-colors duration-300 transform hover:scale-105"
+            >
+              <FaTelegramPlane className="mr-2" /> Telegram
             </a>
           </div>
         </div>
