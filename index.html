@@ -4,6 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pujiverse</title>
+    <!-- Google AdSense Code - Placed for global access across all pages -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3801443267872719" crossorigin="anonymous"></script>
+    
     <meta name="description" content="Pujith Sakhamuri's personal creator hub, connecting creativity, tech, and ideas across YouTube, Instagram, Facebook, X, LinkedIn, and Telegram. Discover projects, videos, and contact info." />
     <meta name="keywords" content="Pujith Sakhamuri, personal brand, creator, YouTube, Instagram, Facebook, Telegram, X, Twitter, LinkedIn, tech, ideas, projects, videos, contact" />
     <!-- Tailwind CSS CDN -->
@@ -47,6 +50,19 @@
         ::-webkit-scrollbar-thumb:hover {
             background: #2b6cb0; 
         }
+        #loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 1.5rem;
+            z-index: -1;
+        }
     </style>
 <script type="importmap">
 {
@@ -56,13 +72,40 @@
     "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
     "react-router-dom": "https://aistudiocdn.com/react-router-dom@^7.9.4",
     "react-icons/": "https://aistudiocdn.com/react-icons@^5.5.0/",
-    "react-icons": "https://aistudiocdn.com/react-icons@^5.5.0"
+    "react-icons": "https://aistudiocdn.com/react-icons@^5.5.0",
+    "vite": "https://aistudiocdn.com/vite@^7.2.4",
+    "@vitejs/plugin-react": "https://aistudiocdn.com/@vitejs/plugin-react@^5.1.1"
   }
 }
 </script>
 </head>
 <body>
-    <div id="root"></div>
+    <div id="root">
+        <div id="loading-screen">
+            <div style="text-align: center;">
+                <p>Loading Pujiverse...</p>
+                <p style="font-size: 0.8rem; opacity: 0.7; margin-top: 10px;">Initializing Galaxy Simulation</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Error Handler Script -->
+    <script>
+        window.onerror = function(message, source, lineno, colno, error) {
+            console.error(message, error);
+            const root = document.getElementById('root');
+            if (root && root.innerText.includes('Loading')) {
+                root.innerHTML = `
+                    <div style="padding: 20px; color: #ff6b6b; text-align: center; margin-top: 100px;">
+                        <h2>Startup Error</h2>
+                        <p>The universe failed to expand.</p>
+                        <pre style="text-align: left; background: rgba(0,0,0,0.5); padding: 10px; border-radius: 5px; overflow: auto; margin-top: 20px;">${message}</pre>
+                    </div>
+                `;
+            }
+        };
+    </script>
+    
     <script type="module" src="./index.tsx"></script>
 </body>
 </html>
